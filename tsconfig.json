@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "jsx": "preserve", 
+      "module": "esnext",
+      "target": "es5",
+      "lib": ["esnext", "dom"],
+      "noEmitOnError": true,
+      "types": ["jest"],
+      "declarationMap": false,
+    //   "rootDir": "src",
+      "composite": false,
+      "outDir": "lib",
+      "declaration": true, 
+      "strict": true,
+      "strictFunctionTypes": true,
+      "strictBindCallApply": true,
+      "strictNullChecks": true,
+      "strictPropertyInitialization": true,
+      "skipLibCheck": true,
+      "moduleResolution": "node",
+    //   "baseUrl": "src",
+      "noEmit": false
+    },
+    "include": ["src/index.ts","src/message.ts","src/type.ts"],
+}
+
+  
