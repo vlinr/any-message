@@ -60,7 +60,7 @@ const createStyle = (parent: HTMLDivElement): void => {
              padding: 10px 16px;
              background-color: #fff;
              box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
-             border-radius: 4px;
+             border-radius: 3px;
              text-align: center;
              transition: all .2s ease;
              position: relative;

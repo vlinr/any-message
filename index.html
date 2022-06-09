@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>any-message</title>
+</head>
+
+<body>
+    <button onclick="openMessage('success')">success</button>
+    <button onclick="openMessage('warn')">warn</button>
+    <button onclick="openMessage('error')">error</button>
+    <button onclick="openMessage('info')">info</button>
+    <button onclick="openMessage('loading',0)">loading</button>
+    <button onclick="openMessage('destroy')">destroy</button>
+    <script src="./dist/any-message.min.js"></script>
+    <script>
+        function openMessage(type, duration) {
+            if (type === 'destroy') {
+                message[type]();
+                return;
+            }
+            message[type](type, duration);
+        }
+    </script>
+</body>
+
+</html>

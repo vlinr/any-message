@@ -86,6 +86,6 @@ The component also provides a destroy method：
 - ```message.destroy([id])```
 
 
-## Contribution
+<!-- ## Contribution
 
-<a href="https://github.com/vlinr/any-message/graphs/contributors"><img src="https://opencollective.com/any-message/contributors.svg?width=890" /></a>
+<a href="https://github.com/vlinr/any-message/graphs/contributors"><img src="https://opencollective.com/any-message/contributors.svg?width=890" /></a> -->
