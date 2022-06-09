@@ -1,64 +1,64 @@
 export declare type IconType = {
     /**
-     * @description 图标类型，内置五种类型
+     * @description icon style
      * @default info
      */
     type?: 'info' | 'warn' | 'error' | 'success' | 'loading';
     /**
-     * @description 是否显示
+     * @description Is show
      * @default true
      */
     show?: boolean;
     /**
-     * @description 自定义图标
+     * @description customize icon
      * @default null
      */
     custom?: string;
 };
 export declare type ParamsType = {
     /**
-     * @description 样式名称
+     * @description class name
      * @default null
      */
     className?: string;
     /**
-     * @description 自定义图标
+     * @description customize icon
      * @default null
      */
     icon?: IconType;
     /**
-     * @description 点击后的回调事件
+     * @description click callback
      */
     onClick?: (e?: Event) => void;
     /**
-     * @description 关闭后的回调事件
+     * @description close callback
      *
 
      */
     onClose?: (el?: HTMLElement) => void;
     /**
-     * @description 唯一key值，用户指定销毁或修改使用
+     * @description Unique key value, which is specified by the user for destruction or modification
      * @default null
      */
     key?: string;
     /**
-     * @description 最大同时渲染数量，超过会清除顶部第一个
+     * @description Maximum number of simultaneous renderings, exceeding which will clear the top first
      * @default Infinity
      */
     maxCount?: number;
     /**
-     * @description 额外的样式
+     * @description style
      */
     style?: CSSStyleType;
 };
 export declare type CSSStyleType = Partial<CSSStyleDeclaration>;
 export declare type MessageType = Partial<ParamsType & {
     /**
-     * @description 需要显示的提示内容
+     * @description message content
      */
     content: string | HTMLElement;
     /**
-     * @description 显示多久关闭
+     * @description close time
      * @default 3
      */
     duration?: number;

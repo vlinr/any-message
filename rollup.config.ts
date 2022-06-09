@@ -8,10 +8,10 @@ const env = process.env.NODE_ENV;
 const exec = env.split('_');
 const isProdEnv = exec[0] === 'production';
 export default {
-    input: './src/index.ts', //入口文件
+    input: './src/index.ts',
     output: {
-        file: isProdEnv ? './lib/index.js' : './dist/any-message.min.js', //打包后的存放文件
-        format: exec[1], //输出格式 amd es6 iife umd cjs
+        file: isProdEnv ? './lib/index.js' : './dist/any-message.min.js',
+        format: exec[1],
         name: 'message',
     },
     plugins: [

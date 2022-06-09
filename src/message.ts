@@ -1,26 +1,25 @@
-/**
- *
- * @function 兼容ie移除元素
- *
- * @params el:{Element | null}:需要移除的元素
- *
- * @returns void
- *
- * **/
-
 import { IconType, MessageType, ParamsType, ResultType, CSSStyleType } from './type';
 
 let globalConfig: MessageType | null = null;
 
+/**
+ *
+ * @function compatible ie remove element
+ *
+ * @params el:{Element | null}:Elements to be removed
+ *
+ * @returns void
+ *
+ * **/
 const remove = (el: Element | null): void => {
     el?.parentNode?.removeChild(el);
 };
 
 /**
  *
- * @function 创建公共样式
+ * @function create common style
  *
- * @params parent:{HTMLDivElement}:父级元素
+ * @params parent:{HTMLDivElement}:parent el
  *
  * @return void
  *
@@ -189,7 +188,7 @@ const createStyle = (parent: HTMLDivElement): void => {
 
 /**
  *
- * @function 查询公共盒子是否已存在
+ * @function Query whether the public box already exists
  *
  * @return HTMLDivElement | null
  *
@@ -201,7 +200,7 @@ const findEl = (): HTMLDivElement | null => {
 
 /**
  *
- * @function 创建公共盒子
+ * @function Create common box
  *
  * @return HTMLDivElement
  *
@@ -213,16 +212,16 @@ const createBox = (): HTMLDivElement => {
         box = document.createElement('div');
         box.setAttribute('class', 'any_message');
     }
-    createStyle(box); // 创建样式
+    createStyle(box);
     return box;
 };
 
 /**
  *
- * @function 获取显示内容
+ * @function Get display content
  *
- * @params content:{string | HTMLElement}:需要显示的内容
- * @params icon:{IconType}:icon的配置，是否显示icon，icon类型以及自定义的内容
+ * @params content:{string | HTMLElement}:need show content
+ * @params icon:{IconType}:icon configuration, whether to display icon, icon type and customized content
  *
  * @return string
  *
@@ -237,10 +236,10 @@ const getInnerHtml = (content: string | HTMLElement, icon: IconType): string => 
 
 /**
  *
- * @function 根据type返回icon
+ * @function return icon according to type
  *
- * @params type:{'info' | 'warn' | 'error' | 'success'}:icon的类型，默认4种基础icon，更多需要传递第二个参数进行自定义
- * @params custom:[string]:自定义icon的html标签字符串
+ * @params type:{'info' | 'warn' | 'error' | 'success'}:Icon types. There are four basic icons by default. For more, you need to pass the second parameter for customization
+ * @params custom:[string]:HTML tag string of custom icon
  *
  * @return string
  *
@@ -266,10 +265,10 @@ const getIconStr = (type: IconType['type'], custom?: string): string => {
 
 /**
  *
- * @function 添加样式
+ * @function add style
  *
- * @params el:{HTMLElement}:需要添加样式的元素
- * @params className:{string}:需要添加的class名称
+ * @params el:{HTMLElement}:need add style el
+ * @params className:{string}:need add class
  *
  * @returns void
  *
@@ -285,10 +284,10 @@ const updateClassName = (el: HTMLElement, className: string): void => {
 
 /**
  *
- * @function 查询是否包含某个样式
+ * @function query whether to include a style
  *
- * @params oldClassName:{string}:旧的样式
- * @params className:{string}:要查询的样式
+ * @params oldClassName:{string}:old class
+ * @params className:{string}:need find class
  *
  * @returns boolean
  *
@@ -300,13 +299,13 @@ const findHaveClass = (oldClassName: string, className: string): boolean => {
 
 /**
  *
- * @function 创建公共消息体
+ * @function Create public message body
  *
- * @params content:{string | HTMLElement}:需要显示的内容
- * @params duration:{number = 3}:自动关闭时间，小于等于0不自动关闭
- * @params params:[ParamsType]:可配置消息关闭回调，点击回调，icon信息，消息样式名称
+ * @params content:{string | HTMLElement}:need show content
+ * @params duration:{number = 3}:Automatic closing time, no automatic closing when it is less than or equal to 0
+ * @params params:[ParamsType]:Configurable message closing callback, click callback, icon information, message style name
  *
- * @return void
+ * @return Promise<HTMLElement>
  *
  * **/
 
@@ -376,9 +375,9 @@ const createMessage = (
 
 /**
  *
- * @function 合并style样式
+ * @function merge style
  *
- * @params el:{HTMLElement}:需要设置的元素
+ * @params el:{HTMLElement}:need merge el
  * @params style:{CSSStyleType}
  *
  */
@@ -392,9 +391,9 @@ const mergeStyle = (el: HTMLElement, style?: CSSStyleType) => {
 
 /**
  *
- * @function 最大长度校验
+ * @function check max length
  *
- * @params maxCount:{number}:最大程度
+ * @params maxCount:{number}:max length
  *
  * @returns  void
  *
@@ -408,9 +407,9 @@ const checkMaxLength = (maxCount: number = 0) => {
 
 /**
  *
- * @function 查找是否有指定可以值的元素
+ * @function find whether there is an element that can be assigned a value
  *
- * @params key:{string}:需要查询的key，需要设置data-key
+ * @params key:{string}:The key to be queried needs to be set data-key
  *
  * @returns  HTMLDivElement | undefined
  *
@@ -433,7 +432,7 @@ const findMessageElByKey = (key: string): HTMLDivElement | undefined => {
 
 /**
  *
- * @function 获取所有的消息
+ * @function get all messages
  *
  * @returns NodeListOf<HTMLDivElement> | []
  *
@@ -444,13 +443,13 @@ const findMessageEls = (): NodeListOf<HTMLDivElement> | [] => {
 
 /**
  *
- * @function 规定时机移除元素
+ * @function remove element at specified time
  *
- * @params el:{HTMLElement}:消息盒子元素
- * @params msg_el:{HTMLElement}:消息体元素
- * @params duration:{number = 3}:自动关闭时间，小于等于0不自动关闭
- * @params onClose:[()=>void]:关闭回调
- * @params onClick:[(e?:any)=>void]:点击回调
+ * @params el:{HTMLElement}:message box el
+ * @params msg_el:{HTMLElement}:message body el
+ * @params duration:{number = 3}:Automatic closing time, no automatic closing when it is less than or equal to 0
+ * @params onClose:[()=>void]:close callback
+ * @params onClick:[(e?:any)=>void]:click callback
  *
  * @return void
  *
@@ -493,9 +492,9 @@ const removeElByTimer = (
 
 /**
  *
- * @function 结束定时器
+ * @function remove timer
  *
- * @params el:{HTMLElement}:装有定时器的元素
+ * @params el:{HTMLElement}:Element with timer
  *
  * @returns void
  *
@@ -508,12 +507,12 @@ const clearTimer = (el: HTMLElement) => {
 
 /**
  *
- * @function 添加事件
+ * @function add event
  *
- * @params node:{HTMLElement}:需要添加事件的元素
- * @params event:{string}:事件名称
- * @params fn:{(e?: any) => void}:事件处理函数
- * @params opt_useCapture:[boolean:是否自动冒泡
+ * @params node:{HTMLElement}:need add event el
+ * @params event:{string}:event name
+ * @params fn:{(e?: any) => void}:event handler
+ * @params opt_useCapture:[boolean:whether automatic bubbling
  *
  * @return void
  *
@@ -536,12 +535,11 @@ const addEvent = (
 
 /**
  *
- * @function 获取参数
+ * @function get parameters
  *
- * @params config:{string | HTMLElement | MessageType}:参数
+ * @params config:{string | HTMLElement | MessageType}:parameter
  *
- * @tips 参数均为可选参数，但如果同时传参，后续参数将比前置参数优先级更高，如：局部参数config内部包含duration参数，同时设置了全局config，并且传递了duration参数，优先级
- * 将是duration优先级最高，如不传递duration，则是局部duration优先级最高，最后才是全局duration
+ * @tips The parameters are optional. However, if the parameters are transferred at the same time, the subsequent parameters will have higher priority than the preceding parameters. For example, the local parameter config contains the duration parameter, the global config is set, and the duration parameter is passed. The priority will be the highest duration priority. If the duration parameter is not passed, the local duration priority will be the highest, and the global duration will be the last
  *
  * @return void
  *
@@ -586,13 +584,13 @@ const getConfig = (
 
 /**
  *
- * @function 成功提示
+ * @function success
  *
- * @params content:{string | HTMLElement | MessageType}:需要提示的内容
- * @params duration:{number = 3}:自动关闭事件，默认单位秒
- * @params params:[ParamsType]:可配置消息关闭回调，点击回调，icon信息，消息样式名称
+ * @params content:{string | HTMLElement | MessageType}:need show content
+ * @params duration:{number = 3}:close time
+ * @params params:[ParamsType]:icon info
  *
- * @return void
+ * @return Promise<HTMLElement>
  *
  * **/
 
@@ -613,13 +611,13 @@ const success = (
 
 /**
  *
- * @function 警告提示
+ * @function warning
  *
- * @params content:{string | HTMLElement | MessageType}:需要提示的内容
- * @params duration:{number = 3}:自动关闭事件，默认单位秒
- * @params params:[ParamsType]:可配置消息关闭回调，点击回调，icon信息，消息样式名称
+ * @params content:{string | HTMLElement | MessageType}:need show content
+ * @params duration:{number = 3}:close time
+ * @params params:[ParamsType]:icon info
  *
- * @return void
+ * @return Promise<HTMLElement>
  *
  * **/
 
@@ -640,13 +638,13 @@ const warn = (
 
 /**
  *
- * @function 错误提示
+ * @function error
  *
- * @params content:{string | HTMLElement| MessageType}:需要提示的内容
- * @params duration:{number = 3}:自动关闭事件，默认单位秒
- * @params params:[ParamsType]:可配置消息关闭回调，点击回调，icon信息，消息样式名称
+ * @params content:{string | HTMLElement | MessageType}:need show content
+ * @params duration:{number = 3}:close time
+ * @params params:[ParamsType]:icon info
  *
- * @return void
+ * @return Promise<HTMLElement>
  *
  * **/
 
@@ -667,13 +665,13 @@ const error = (
 
 /**
  *
- * @function 普通信息提示
+ * @function info
  *
- * @params content:{string | HTMLElement| MessageType}:需要提示的内容
- * @params duration:{number = 3}:自动关闭事件，默认单位秒
- * @params params:[ParamsType]:可配置消息关闭回调，点击回调，icon信息，消息样式名称
+ * @params content:{string | HTMLElement | MessageType}:need show content
+ * @params duration:{number = 3}:close time
+ * @params params:[ParamsType]:icon info
  *
- * @return void
+ * @return Promise<HTMLElement>
  *
  * **/
 
@@ -694,13 +692,13 @@ const info = (
 
 /**
  *
- * @function 加载中
+ * @function loading
  *
- * @params content:{string | HTMLElement| MessageType}:需要提示的内容
- * @params duration:{number = 3}:自动关闭事件，默认单位秒
- * @params params:[ParamsType]:可配置消息关闭回调，点击回调，icon信息，消息样式名称
+ * @params content:{string | HTMLElement | MessageType}:need show content
+ * @params duration:{number = 3}:close time
+ * @params params:[ParamsType]:icon info
  *
- * @return void
+ * @return Promise<HTMLElement>
  *
  * **/
 
@@ -721,7 +719,7 @@ const loading = (
 
 /**
  *
- * @function 移除样式
+ * @function remove style
  *
  * @return void
  *
@@ -735,9 +733,9 @@ const removeStyle = (): void => {
 
 /**
  *
- * @object 全局配置
+ * @object global config
  *
- * @tips 优先级比直接调用相应方法更低
+ * @tips lower priority than calling the corresponding method directly
  *
  */
 
@@ -747,9 +745,9 @@ const config = (params: MessageType) => {
 
 /**
  *
- * @function 销毁消息
+ * @function destroy message
  *
- * @params id:[string]：需要销毁的key
+ * @params id:[string]：need destroy key
  *
  * @return void
  *

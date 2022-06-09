@@ -1,12 +1,3 @@
-/**
- *
- * @function 兼容ie移除元素
- *
- * @params el:{Element | null}:需要移除的元素
- *
- * @returns void
- *
- * **/
 import { ParamsType } from './type';
 declare const _default: {
     success: (content?: string | Partial<ParamsType & {
