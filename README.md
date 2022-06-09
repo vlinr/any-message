@@ -2,6 +2,11 @@
 
 A beautiful global message prompt.
 
+<p align="center">
+    <a href="https://unpkg.com/any-message/lib/index.js"><img src="https://img.badgesize.io/https:/unpkg.com/any-message/lib/index.js?compression=gzip&style=flat-square" alt="Gzip Size"></a>
+    <a href="https://www.npmjs.com/package/any-message"><img src="https://img.shields.io/npm/v/any-message.svg?style=flat-square&colorB=51C838" alt="NPM Version"></a>
+</p>
+
 ## Introduction
 
 The message prompts, using the native DOM rendering mechanism, dynamically creates styles to complete the rendering, and automatically recycles when the execution ends. It is independent of any framework and can be migrated for use.
